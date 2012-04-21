@@ -16,7 +16,8 @@
 	{
 		var defaults = {
             iIndex: 1,
-            sIdList: "lnList"
+            sIdList: "lnList",
+            sWrapperClass : null
         };
 
         $.extend(defaults,oDTSettings.oInit.oListNav);
@@ -24,6 +25,9 @@
 		var me = this;
 		var oDTTable = oDTSettings.oInstance;
 		me.$container = $('<div></div>');
+		if(defaults.sWrapperClass != null)
+			me.$container.addClass(defaults.sWrapperClass);
+
 		me.$div =$('<div id="'+defaults.sIdList+'-nav"></div>');
 		me.$ul= $('<ul id="'+defaults.sIdList+'" class="hide" style="display:none"></ul>');
 
