@@ -8,6 +8,10 @@
 * Requires DataTables 1.9.0 ( http://datatables.net/ )
 * Requires ListNav 2.1 ( http://www.ihwy.com/labs/jquery-listnav-plugin.aspx )
 *
+* Dual licensed under the MIT and GPL licenses:
+*   http://www.opensource.org/licenses/mit-license.php
+*   http://www.gnu.org/licenses/gpl.html
+*
 */
 
 (function($) {
