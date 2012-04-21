@@ -28,18 +28,20 @@
 		me.$ul= $('<ul id="'+defaults.sIdList+'" class="hide" style="display:none"></ul>');
 
 		me.$container.append(me.$div).append(me.$ul);
-		
-		/* Callback to add in li and can disabled letters after */
-		oDTSettings.aoRowCallback.push( {
-			"fn": function(nRow, aData, iDisplayIndex){
-				me.$ul.append("<li>"+aData[defaults.iIndex]+"</li>");				
-				return nRow;
-        	}
-		} );
 
+		var count = 0;
 		/* Apply list nav and bind click handler */
 		oDTSettings.aoInitComplete.push( {
+	            
 	            "fn": function () {
+
+	            	/* init listnav fill li to show disabled and enable letters */
+	            	var anNodes = oDTTable.oApi._fnGetTrNodes( oDTSettings );
+	            	$("td:nth-child("+(defaults.iIndex+1) + ")",anNodes).each(function(){	            		
+	            		me.$ul.append("<li>"+$(this).text()+"</li>");
+	            	});
+
+
 	            	$('#'+defaults.sIdList ).listnav({ 
 		    			initLetter: 'all', 
 		    			includeAll: true, 
