@@ -44,10 +44,21 @@
 	            "fn": function () {
 
 	            	/* init listnav fill li to show disabled and enable letters */
-	            	var anNodes = oDTTable.oApi._fnGetTrNodes( oDTSettings );
+	            	var count = oDTSettings.fnRecordsTotal();
+			for ( var i=0 ; i<count ; i++ )
+			{			
+				var anNodes = oDTTable.oApi._fnGetTdNodes( oDTSettings,i );
+				$(anNodes[(defaults.iIndex)] ).each(function(){	            		
+					me.$ul.append("<li>"+$(this).text()+"</li>");
+				});
+			}
+			
+			/*
+			var anNodes = oDTTable.oApi._fnGetTrNodes( oDTSettings );
 	            	$("td:nth-child("+(defaults.iIndex+1) + ")",anNodes).each(function(){	            		
 	            		me.$ul.append("<li>"+$(this).text()+"</li>");
 	            	});
+			*/
 
 
 	            	$('#'+defaults.sIdList ).listnav({ 
