@@ -7,31 +7,38 @@
 		<title>DT_Listnav example</title>
 
 		<!-- DataTables CSS -->
-		<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css"> 
-		<link rel="stylesheet" type="text/css" href="http://datatables.net/release-datatables/media/css/demo_table.css">
-		<link rel="stylesheet" type="text/css" href="http://datatables.net/release-datatables/media/css/demo_page.css">
+		<link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css"> 
+		<link rel="stylesheet" type="text/css" href="https://datatables.net/release-datatables/media/css/demo_table.css">
+		<link rel="stylesheet" type="text/css" href="https://datatables.net/release-datatables/media/css/demo_page.css">
 		
 		<style>
-#dt_example .ln-letters { overflow:hidden; margin:0 0 10px; }
-#dt_example .ln-letters a { font-size:0.9em; display:block; float:left; padding:2px 6px; border:1px solid silver; border-right:none; text-decoration:none; }
-#dt_example .ln-letters a.ln-last { border-right:1px solid silver; }
-#dt_example .ln-letters a:hover,
-#dt_example .ln-letters a.ln-selected { background-color:#eaeaea; }
-#dt_example .ln-letters a.ln-disabled { color:#ccc; }
-#dt_example .ln-letter-count { text-align:center; font-size:0.8em; line-height:1; margin-bottom:3px; color:#336699; }
+button.btn.abcdaire { overflow:hidden; margin:0 0 10px; background-color:#ffffff; color:#0063DC; }
+button.btn.abcdaire { font-size:0.9em; display:block; float:left; padding:2px 6px; border:1px solid silver; border-right:none; text-decoration:none; }
+button.btn.abcdaire:last-child { border-right:1px solid silver; }
+button.btn.abcdaire:hover,
+button.btn.abcdaire.active { background-color:#eaeaea; }
+button.btn.abcdaire.disabled { color:#ccc; }
 		</style>
 		
 		<!-- jQuery -->
-		<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script> 
+		<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script> 
 		<!-- DataTables -->
-		<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>		
+		<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>		
 		
-		<script type="text/javascript" charset="utf-8" src="../media/js/jquery.listnav.min-2.1.js"></script>
-		<script type="text/javascript" charset="utf-8" src="../media/js/jquery.dataTables.listnav.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../media/js/jquery.dataTables.listnav.2.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			$(document).ready( function () {
 				var oTable = $('#example').dataTable( {
-					"sDom": 'Zlfrtip'
+					"sDom": 'Zlfrtip',
+					"oListNav" : {
+					    "fRetreiveFirstLetters" : function(){
+					        var array = [];
+					        
+					        // Retrieve letters by any manners you need, make a sync query for example
+					        
+					        return array;
+					    }
+					}
 				} );
 			} );
 		</script>
@@ -482,16 +489,36 @@
 			</ul>
 			
 			
-			<h1>Initialisation code</h1>
-			<pre>$(document).ready( function () {
+			<h1>Initialisation code for table without bServerSide</h1>
+<pre>
+$(document).ready( function () {
 	var oTable = $('#example').dataTable( {
 		"sDom": 'Zlfrtip'
 	} );
-} );</pre>
+} );
+</pre>
+
+<h1>Initialisation code for table with bServerSide</h1>
+<pre>
+$(document).ready( function () {
+	var oTable = $('#example').dataTable( {
+		"sDom": 'Zlfrtip',
+		"bServerSide" : true,
+		"sAjaxSource": "xhr.php",
+		"oListNav" : {
+            "fRetreiveFirstLetters" : function(){
+                var array = [];
+                // Retrieve letters by any manners you need, make a sync query for example
+                return array;
+            }
+		}
+	} );
+} );
+</pre>
 			
 			<div id="footer" style="text-align:center;">
 				<span style="font-size:10px;">
-					DT_ListNav &copy; Cyril TALLEFERT 2012
+					DT_ListNav &copy; Cyril TALLEFERT 2013
 				</span>
 			</div>
 		</div>

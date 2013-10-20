@@ -6,7 +6,6 @@ Integration of ListNav JQuery plugin into Datatables
 Third Parties :
   
   - DataTables © Allan Jardine 2010 ( http://datatables.net )
-  - ListNav © 2009 iHwy, Inc. ( http://www.ihwy.com/labs/jquery-listnav-plugin.aspx )
 
 Options
 =======
@@ -18,7 +17,11 @@ Options are specified as a DataTables option, in an object called `oListNav`:
 		"oListNav": {
 			iIndex: 1,
             sIdList: "lnList",
-            sWrapperClass : null
+            sWrapperClass : null,
+            fRetreiveFirstLetters : null,
+            sAllWord : 'All',
+            sLetterClass : "btn abcdaire",
+            sLetterDisabledClass : "btn abcdaire disabled"
 		}
 	} );
 	
@@ -28,6 +31,10 @@ The possible options are:
  * `iIndex` - index on which the filter is applied ( it starts at 0) .
  * `sIdList` - id for div of listnav.
  * `sWrapperClass` - class for wrapper container.
+ * `fRetreiveFirstLetters` - function which return an array with first letters use with bServerSide  = true.
+ * `sAllWord` - Translate the 'all' word in your language if you need.
+ * `sLetterClass` - class used for letters.
+ * `sLetterDisabledClass` - class used for letters not found.
 
 Contributing
 ============
