@@ -14,6 +14,8 @@
 
         $.extend(defaults,oDTSettings.oInit.oListNav);
 
+
+
 		var me = this;
 		var oDTTable = oDTSettings.oInstance;
 		me.$container = $('<div class="btn-group"></div>');
@@ -42,9 +44,11 @@
             "fn": function () {
                 if(oDTSettings.oFeatures.bServerSide === false)
                 {
-                    var anNodes = oDTTable.oApi._fnGetTrNodes( oDTSettings );
-                    $("td:nth-child("+(defaults.iIndex+1) + ")",anNodes).each(function(){
-                        var l =$(this).text()[0].toUpperCase();
+                    var api = oDTTable.api();
+                    var aValues = api.column(defaults.iIndex).data().unique();
+
+                   $.each(aValues,function(idx,elt){
+                        var l =elt[0].toUpperCase();
                         if(isNaN(l))
                             $('button[data-letter='+l+']',me.$container).removeClass('disabled');
                         else
